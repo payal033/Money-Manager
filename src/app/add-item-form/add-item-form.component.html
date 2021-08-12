@@ -1,0 +1,38 @@
+<form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
+    <!-- {{ item | json}} -->
+    <div class="field is-horizontal">
+        <div class="field-body">
+
+            <div class="field is-narrow">
+                <div class="control">
+                    <div class="select">
+                        <select [ngModel]="item.type" name="type">
+                            <option>Income</option>
+                            <option>Expense</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-narrow">
+                <p class="control">
+                    <input type="number" style="width: 100px" class="input" placeholder="Amount" [ngModel]="item.amount" name="amount" required>
+                </p>
+            </div>
+
+            <div class="field">
+                <p class="control">
+                    <input type="text"  class="input" placeholder="Description" [ngModel]="item.description" name="description" required>
+                </p>
+            </div>
+
+            <div class="field is-narrow">
+                <button type="submit" class="button" [ngClass]="{ 'is-primary' : isNewItem , 'is-success' : !isNewItem }" [disabled]="itemForm.invalid" >
+                    <span *ngIf="isNewItem">Add</span>
+                    <span *ngIf="!isNewItem">Save</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</form>
